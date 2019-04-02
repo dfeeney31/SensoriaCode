@@ -12,17 +12,17 @@ for file = files'
     
     clear pks_nav locs_nav pks_cub locs_cub pks_5mt locs_5mt pks_1mt locs_1mt pks_calc locs_calc
 
-    [pks_nav, locs_nav] = findpeaks(walk_dat.CS3(10:end), 'MinPeakDistance',10, 'MinPeakHeight',4.2);
-    [pks_cub, locs_cub] = findpeaks(walk_dat.CS1(10:end), 'MinPeakDistance',10, 'MinPeakHeight',5.1);
-    [pks_5mt, locs_5mt] = findpeaks(walk_dat.CS1(10:end), 'MinPeakDistance',10, 'MinPeakHeight',4);
-    [pks_1mt, locs_1mt] = findpeaks(walk_dat.CS4(10:end), 'MinPeakDistance',10, 'MinPeakHeight',2);
-    [pks_calc, locs_calc] = findpeaks(walk_dat.CS5(10:end), 'MinPeakDistance',10, 'MinPeakheight',12);
+    [pks_nav, locs_nav] = findpeaks(walk_dat.CS3(10:end), 'MinPeakDistance',20, 'MinPeakHeight',4.2);
+    [pks_cub, locs_cub] = findpeaks(walk_dat.CS1(10:end), 'MinPeakDistance',20, 'MinPeakHeight',5.1);
+    [pks_5mt, locs_5mt] = findpeaks(walk_dat.CS1(10:end), 'MinPeakDistance',20, 'MinPeakHeight',4);
+    [pks_1mt, locs_1mt] = findpeaks(walk_dat.CS4(10:end), 'MinPeakDistance',20, 'MinPeakHeight',2);
+    [pks_calc, locs_calc] = findpeaks(walk_dat.CS5(10:end), 'MinPeakDistance',20, 'MinPeakheight',12);
     
     % Outlier detection %
-    pks_1mt = pks_1mt(pks_1mt > (0.4 * mean(pks_1mt)));
-    pks_5mt = pks_5mt(pks_5mt > (0.4 * mean(pks_5mt)));
-    pks_calc = pks_calc(pks_calc > (0.4 * mean(pks_calc)));
-    pks_cub = pks_cub(pks_cub > (0.4 * mean(pks_cub)));
+    pks_1mt = pks_1mt(pks_1mt > (0.55 * mean(pks_1mt)));
+    pks_5mt = pks_5mt(pks_5mt > (0.55 * mean(pks_5mt)));
+    pks_calc = pks_calc(pks_calc > (0.55 * mean(pks_calc)));
+    pks_cub = pks_cub(pks_cub > (0.55 * mean(pks_cub)));
     
     %%%%% Calculate the averages, etc. %%%
     longdata(1).avg_nav{counter} = mean(pks_nav);
@@ -98,7 +98,7 @@ h2 = longdata.pkCalc{1,2}; %R
 h3 = longdata.pkCalc{1,3}; %T
 h4 = longdata.pkCalc{1,4}; %X
 map = brewermap(3,'Set1'); 
-figure(2)
+figure(3)
 histf(h1,mean(h1)-10*std(h1):.5:mean(h1)+10*std(h1),'facecolor',map(1,:),'facealpha',.5,'edgecolor','none')
 title('Calcaneous Histograms')
 hold on

@@ -1,4 +1,4 @@
-function makePlots = makePlots2(longdata,len,sub)
+function makePlots = makePlots2(longdata,len)
 % makePlot Builds an average plot for each subject 
 locs = longdata.locs{1,1};
 locs2 = longdata.locs{1,2};
@@ -22,20 +22,20 @@ mp5_x = zeros(length(longdata.locs{1,4}),(len*2)+1);
 
 
 for i = 2:(length(locs)-2)
-   calc_lace(i,:) =  longdata.calc{1,sub}(floor(locs(i)-len):floor(locs(i)+len));
-   calc_lr(i,:) =  longdata.calc{1,sub+1}(floor(locs2(i)-len):floor(locs2(i)+len));
-   calc_t(i,:) =  longdata.calc{1,sub+2}(floor(locs3(i)-len):floor(locs3(i)+len));
-   calc_x(i,:) =  longdata.calc{1,sub+3}(floor(locs4(i)-len):floor(locs4(i)+len));
+   calc_lace(i,:) =  longdata.calc{1,1}(floor(locs(i)-len):floor(locs(i)+len));
+   calc_lr(i,:) =  longdata.calc{1,2}(floor(locs2(i)-len):floor(locs2(i)+len));
+   calc_t(i,:) =  longdata.calc{1,3}(floor(locs3(i)-len):floor(locs3(i)+len));
+   calc_x(i,:) =  longdata.calc{1,4}(floor(locs4(i)-len):floor(locs4(i)+len));
 
-   mp1_lace(i,:) =  longdata.mtp1{1,sub}(floor(locs(i)-len):floor(locs(i)+len));
-   mp1_lr(i,:) =  longdata.mtp1{1,sub+1}(floor(locs2(i)-len):floor(locs2(i)+len));
-   mp1_t(i,:) =  longdata.mtp1{1,sub+2}(floor(locs3(i)-len):floor(locs3(i)+len));
-   mp1_x(i,:) =  longdata.mtp1{1,sub+3}(floor(locs4(i)-len):floor(locs4(i)+len));
+   mp1_lace(i,:) =  longdata.mtp1{1,1}(floor(locs(i)-len):floor(locs(i)+len));
+   mp1_lr(i,:) =  longdata.mtp1{1,2}(floor(locs2(i)-len):floor(locs2(i)+len));
+   mp1_t(i,:) =  longdata.mtp1{1,3}(floor(locs3(i)-len):floor(locs3(i)+len));
+   mp1_x(i,:) =  longdata.mtp1{1,4}(floor(locs4(i)-len):floor(locs4(i)+len));
    
-   mp5_lace(i,:) =  longdata.mtp5{1,sub}(floor(locs(i)-len):floor(locs(i)+len));
-   mp5_lr(i,:) = longdata.mtp5{1,sub+1}(floor(locs2(i)-len):floor(locs2(i)+len));
-   mp5_t(i,:) =  longdata.mtp5{1,sub+2}(floor(locs3(i)-len):floor(locs3(i)+len));
-   mp5_x(i,:) =  longdata.mtp5{1,sub+3}(floor(locs4(i)-len):floor(locs4(i)+len));
+   mp5_lace(i,:) =  longdata.mtp5{1,1}(floor(locs(i)-len):floor(locs(i)+len));
+   mp5_lr(i,:) = longdata.mtp5{1,2}(floor(locs2(i)-len):floor(locs2(i)+len));
+   mp5_t(i,:) =  longdata.mtp5{1,3}(floor(locs3(i)-len):floor(locs3(i)+len));
+   mp5_x(i,:) =  longdata.mtp5{1,4}(floor(locs4(i)-len):floor(locs4(i)+len));
 end
 
 figure(1)
