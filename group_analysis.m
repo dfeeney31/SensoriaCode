@@ -50,19 +50,21 @@ for file = files'
     counter = counter + 1;
 end
 
+%% Histograms of peak pressures
+%%% First met head %%%
 h1 = longdata.pk1mt{1,1}; %L
 h2 = longdata.pk1mt{1,2}; %R
 h3 = longdata.pk1mt{1,3}; %T
 h4 = longdata.pk1mt{1,4}; %X
 %%% Requires brewermap and histf (modified on line 112) in same folder
-map = brewermap(3,'Set1'); 
+map = brewermap(4,'Set1'); 
 figure(1)
 histf(h1,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(1,:),'facealpha',.5,'edgecolor','none')
 title('1st Met Histogram')
 hold on
 histf(h2,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(2,:),'facealpha',.5,'edgecolor','none')
 histf(h3,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(3,:),'facealpha',.5,'edgecolor','none')
-histf(h4,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(3,:),'facealpha',.5,'edgecolor','none')
+histf(h4,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(4,:),'facealpha',.5,'edgecolor','none')
 box off
 axis tight
 legend1 = sprintf('LR mu = %.3f', mean(h1));
@@ -76,14 +78,13 @@ h1 = longdata.pk5mt{1,1}; %L
 h2 = longdata.pk5mt{1,2}; %R
 h3 = longdata.pk5mt{1,3}; %T
 h4 = longdata.pk5mt{1,4}; %X
-map = brewermap(3,'Set1'); 
 figure(2)
 histf(h1,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(1,:),'facealpha',.5,'edgecolor','none')
 title('5th Met Histograms')
 hold on
 histf(h2,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(2,:),'facealpha',.5,'edgecolor','none')
 histf(h3,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(3,:),'facealpha',.5,'edgecolor','none')
-histf(h4,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(3,:),'facealpha',.5,'edgecolor','none')
+histf(h4,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(4,:),'facealpha',.5,'edgecolor','none')
 box off
 axis tight
 legend1 = sprintf('LR mu = %.3f', mean(h1));
@@ -97,14 +98,33 @@ h1 = longdata.pkCalc{1,1}; %L
 h2 = longdata.pkCalc{1,2}; %R
 h3 = longdata.pkCalc{1,3}; %T
 h4 = longdata.pkCalc{1,4}; %X
-map = brewermap(3,'Set1'); 
 figure(3)
 histf(h1,mean(h1)-10*std(h1):.5:mean(h1)+10*std(h1),'facecolor',map(1,:),'facealpha',.5,'edgecolor','none')
 title('Calcaneous Histograms')
 hold on
 histf(h2,mean(h1)-10*std(h1):.5:mean(h1)+10*std(h1),'facecolor',map(2,:),'facealpha',.5,'edgecolor','none')
 histf(h3,mean(h1)-10*std(h1):.5:mean(h1)+10*std(h1),'facecolor',map(3,:),'facealpha',.5,'edgecolor','none')
-histf(h4,mean(h1)-10*std(h1):.5:mean(h1)+10*std(h1),'facecolor',map(3,:),'facealpha',.5,'edgecolor','none')
+histf(h4,mean(h1)-10*std(h1):.5:mean(h1)+10*std(h1),'facecolor',map(4,:),'facealpha',.5,'edgecolor','none')
+box off
+axis tight
+legend1 = sprintf('LR mu = %.3f', mean(h1));
+legend2 = sprintf('Lace mu = %.3f', mean(h2));
+legend3 = sprintf('Tri mu = %.3f', mean(h3));
+legend4 = sprintf('X mu = %.3f', mean(h4));
+legend({legend1, legend2, legend3, legend4});
+
+%%%%% Cuboid %%%%%
+h1 = longdata.pkCub{1,1}; %L
+h2 = longdata.pkCub{1,2}; %R
+h3 = longdata.pkCub{1,3}; %T
+h4 = longdata.pkCub{1,4}; %X
+figure(4)
+histf(h1,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(1,:),'facealpha',.5,'edgecolor','none')
+title('Cuboid Histograms')
+hold on
+histf(h2,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(2,:),'facealpha',.5,'edgecolor','none')
+histf(h3,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(3,:),'facealpha',.5,'edgecolor','none')
+histf(h4,mean(h1)-10*std(h1):.1:mean(h1)+10*std(h1),'facecolor',map(4,:),'facealpha',.5,'edgecolor','none')
 box off
 axis tight
 legend1 = sprintf('LR mu = %.3f', mean(h1));
