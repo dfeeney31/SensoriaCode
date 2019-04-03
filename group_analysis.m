@@ -132,3 +132,49 @@ legend2 = sprintf('Lace mu = %.3f', mean(h2));
 legend3 = sprintf('Tri mu = %.3f', mean(h3));
 legend4 = sprintf('X mu = %.3f', mean(h4));
 legend({legend1, legend2, legend3, legend4});
+
+
+%%%% Bar plot with error bars for averages %%%%
+vals = [longdata.avg_5mt{1}, longdata.avg_5mt{2}, longdata.avg_5mt{3}, longdata.avg_5mt{4}];
+x = categorical({'LR','Lace','Tri', 'X'});
+errHigh = [std(longdata.pk5mt{1,1}), std(longdata.pk5mt{1,2}), std(longdata.pk5mt{1,3}), std(longdata.pk5mt{1,4})];
+
+figure(5)
+bar(x, vals)
+title('5th Met')
+ylabel('Peak Pressure (PSI)')
+hold on
+err = errorbar(x,vals,errHigh,errHigh);
+err.Color = [0 0 0];
+err.LineStyle = 'none';
+hold off
+
+%%% Bar plot for first met
+vals = [longdata.avg_1mt{1}, longdata.avg_1mt{2}, longdata.avg_1mt{3}, longdata.avg_1mt{4}];
+x = categorical({'LR','Lace','Tri', 'X'});
+errHigh = [std(longdata.pk1mt{1,1}), std(longdata.pk1mt{1,2}), std(longdata.pk1mt{1,3}), std(longdata.pk1mt{1,4})];
+
+figure(6)
+bar(x, vals)
+title('1st Met')
+ylabel('Peak Pressure (PSI)')
+hold on
+err = errorbar(x,vals,errHigh,errHigh);
+err.Color = [0 0 0];
+err.LineStyle = 'none';
+hold off
+
+%%% Bar plot for calcaneous 
+vals = [longdata.avg_heel{1}, longdata.avg_heel{2}, longdata.avg_heel{3}, longdata.avg_heel{4}];
+x = categorical({'LR','Lace','Tri', 'X'});
+errHigh = [std(longdata.pkCalc{1,1}), std(longdata.pkCalc{1,2}), std(longdata.pkCalc{1,3}), std(longdata.pkCalc{1,4})];
+
+figure(7)
+bar(x, vals)
+title('Calcaneous')
+ylabel('Peak Pressure (PSI)')
+hold on
+err = errorbar(x,vals,errHigh,errHigh);
+err.Color = [0 0 0];
+err.LineStyle = 'none';
+hold off
