@@ -30,7 +30,6 @@ for file = files'
     longdata(1).avg_5mt{counter} = mean(pks_5mt); 
     longdata(1).avg_1mt{counter} = mean(pks_1mt); 
     longdata(1).avg_heel{counter} = mean(pks_calc);
-    
     longdata(1).cvHeel{counter} = (std(walk_dat.CS5(10:end)) / mean(walk_dat.CS5(10:end))) * 100;
     
     %%% Save TS data %%%

@@ -1,7 +1,8 @@
 %%%%%% Sensor 0: Tibia, 1: MTP 5, 2: M Malleolus, 3: Navicular, 4: MTP 1 %%
 %%%%%% Sensor 5: Calcaneus, 6: lateral malleolus, 7: cuboid %%%%%%%%%%%%%%
-walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\df_lace_in.csv');
-
+walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing1.csv');
+swing2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing2.csv');
+swing3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing3.csv');
 %%% Full sock %%%
 figure(1)
 plot(walk_dat.CS0(10:end))
@@ -24,7 +25,6 @@ plot(walk_dat.CS7(10:end))
 plot(walk_dat.CS1(10:end))
 plot(walk_dat.CS4(10:end))
 plot(walk_dat.CS5(10:end))
-
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 [pks_nav, locs_nav] = findpeaks(walk_dat.CS3(10:end), 'MinPeakDistance',50);
