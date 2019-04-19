@@ -2,7 +2,12 @@
 %%%%%% Sensor 5: Calcaneus, 6: lateral malleolus, 7: cuboid %%%%%%%%%%%%%%
 walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing1.csv');
 swing2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing2.csv');
-swing3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing3.csv');
+swing3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\X.csv');
+walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\Lace.csv');
+walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\LR.csv');
+walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\Tri.csv');
+walk_dat4 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\X.csv');
+
 %%% Full sock %%%
 figure(1)
 plot(walk_dat.CS0(10:end))
@@ -20,11 +25,46 @@ legend('Tibia','5th Met', 'M Malleolus', 'Navicular','1st Met','Calcneus','L. Ma
 %%% Only foot sensors %%%
 figure(2)
 plot(walk_dat.CS3(10:end))
+title('Lace')
 hold on
 plot(walk_dat.CS7(10:end))
 plot(walk_dat.CS1(10:end))
 plot(walk_dat.CS4(10:end))
 plot(walk_dat.CS5(10:end))
+ylim([-5 20])
+legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
+
+figure(3)
+plot(walk_dat2.CS3(10:end))
+title('LR')
+hold on
+plot(walk_dat2.CS7(10:end))
+plot(walk_dat2.CS1(10:end))
+plot(walk_dat2.CS4(10:end))
+plot(walk_dat2.CS5(10:end))
+ylim([-5 20])
+legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
+
+figure(4)
+plot(walk_dat3.CS3(10:end))
+title('Tri')
+hold on
+plot(walk_dat3.CS7(10:end))
+plot(walk_dat3.CS1(10:end))
+plot(walk_dat3.CS4(10:end))
+plot(walk_dat3.CS5(10:end))
+ylim([-5 20])
+legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
+
+figure(5)
+plot(walk_dat4.CS3(10:end))
+title('X')
+hold on
+plot(walk_dat4.CS7(10:end))
+plot(walk_dat4.CS1(10:end))
+plot(walk_dat4.CS4(10:end))
+plot(walk_dat4.CS5(10:end))
+ylim([-5 20])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 [pks_nav, locs_nav] = findpeaks(walk_dat.CS3(10:end), 'MinPeakDistance',50);
