@@ -2,7 +2,7 @@
 %%%%%% Sensor 5: Calcaneus, 6: lateral malleolus, 7: cuboid %%%%%%%%%%%%%%
 %walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\df_x_in.CSsv');
 clear
-cd 'C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\'
+cd 'C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\'
 files = dir('*.csv');
 longdata(1,1) = struct();
 counter = 1;

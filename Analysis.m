@@ -1,12 +1,25 @@
 %%%%%% Sensor 0: Tibia, 1: MTP 5, 2: M Malleolus, 3: Navicular, 4: MTP 1 %%
 %%%%%% Sensor 5: Calcaneus, 6: lateral malleolus, 7: cuboid %%%%%%%%%%%%%%
+addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')  
 walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing1.csv');
 swing2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing2.csv');
 swing3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\X.csv');
+% NB AW below
 walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\Lace.csv');
 walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\LR.csv');
 walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\Tri.csv');
 walk_dat4 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\X.csv');
+% Saucony AW
+walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\aw_lace.csv');
+walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\aw_lr.csv');
+walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\aw_tri.csv');
+walk_dat4 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\aw_x.csv');
+
+% DF below
+walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\df_lace_in.csv');
+walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\df_LR_in.csv');
+walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\df_tri_in.csv');
+walk_dat4 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\df_x_in.csv');
 
 %%% Full sock %%%
 figure(1)
@@ -28,10 +41,10 @@ plot(walk_dat.CS3(10:end))
 title('Lace')
 hold on
 plot(walk_dat.CS7(10:end))
-plot(walk_dat.CS1(10:end))
+plot(walk_dat.CS1(10:end) + 3)
 plot(walk_dat.CS4(10:end))
-plot(walk_dat.CS5(10:end))
-ylim([-5 20])
+plot(walk_dat.CS5(10:end) + 6)
+ylim([0 30])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 figure(3)
@@ -39,10 +52,10 @@ plot(walk_dat2.CS3(10:end))
 title('LR')
 hold on
 plot(walk_dat2.CS7(10:end))
-plot(walk_dat2.CS1(10:end))
+plot(walk_dat2.CS1(10:end) + 3)
 plot(walk_dat2.CS4(10:end))
-plot(walk_dat2.CS5(10:end))
-ylim([-5 20])
+plot(walk_dat2.CS5(10:end) + 6)
+ylim([0 30])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 figure(4)
@@ -50,10 +63,10 @@ plot(walk_dat3.CS3(10:end))
 title('Tri')
 hold on
 plot(walk_dat3.CS7(10:end))
-plot(walk_dat3.CS1(10:end))
+plot(walk_dat3.CS1(10:end) + 3)
 plot(walk_dat3.CS4(10:end))
-plot(walk_dat3.CS5(10:end))
-ylim([-5 20])
+plot(walk_dat3.CS5(10:end) + 6)
+ylim([0 30])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 figure(5)
@@ -61,10 +74,10 @@ plot(walk_dat4.CS3(10:end))
 title('X')
 hold on
 plot(walk_dat4.CS7(10:end))
-plot(walk_dat4.CS1(10:end))
+plot(walk_dat4.CS1(10:end) + 3)
 plot(walk_dat4.CS4(10:end))
-plot(walk_dat4.CS5(10:end))
-ylim([-5 20])
+plot(walk_dat4.CS5(10:end) + 6)
+ylim([0 30])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 [pks_nav, locs_nav] = findpeaks(walk_dat.CS3(10:end), 'MinPeakDistance',50);
