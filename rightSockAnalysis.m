@@ -4,9 +4,10 @@ addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')
 walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing1.csv');
 swing2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing2.csv');
 swing3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\X.csv');
-walk_dat= importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\walk_1.csv');
-walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\walk_2.csv');
-walk_dat3= importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\overTight.csv');
+
+walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\rightWalkLow.csv');
+walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\rightWalkMod.csv');
+walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\rightWalkHigh.csv');
 
 
 % NB AW below
@@ -32,19 +33,23 @@ walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasTennis
 walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasTennis\Skater_boa.csv');
 walk_dat4 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasTennis\Skater_NL.csv');
 
+% Alpine
+walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AlpineData\AlpineBoaRight.csv');
+walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AlpineData\AlpineBoaRightFast.csv');
+
 %%% Full sock %%%
-% figure(1)
-% plot(walk_dat.CS0(10:end))
-% hold on
-% plot(walk_dat.CS1(10:end))
-% plot(walk_dat.CS2(10:end))
-% plot(walk_dat.CS3(10:end))
-% plot(walk_dat.CS4(10:end))
-% plot(walk_dat.CS5(10:end))
-% plot(walk_dat.CS6(10:end))
-% plot(walk_dat.CS7(10:end))
-% 
-% legend('Tibia','5th Met', 'M Malleolus', 'Navicular','1st Met','Calcneus','L. Malleolus','Cuboid')
+figure(1)
+plot(walk_dat2.CS0(10:end))
+hold on
+plot(walk_dat2.CS1(10:end))
+plot(walk_dat2.CS2(10:end))
+plot(walk_dat2.CS3(10:end))
+plot(walk_dat2.CS4(10:end))
+plot(walk_dat2.CS5(10:end))
+plot(walk_dat2.CS6(10:end))
+plot(walk_dat2.CS7(10:end))
+
+legend('Tibia','5th Met', 'M Malleolus', 'Navicular','1st Met','Calcneus','L. Malleolus','Cuboid')
 
 %%% Only foot sensors %%%
 figure(2)
@@ -55,7 +60,6 @@ plot(walk_dat.CS7(10:end))
 plot(walk_dat.CS1(10:end))
 plot(walk_dat.CS4(10:end))
 plot(walk_dat.CS5(10:end))
-ylim([0 30])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 figure(3)
@@ -66,7 +70,6 @@ plot(walk_dat2.CS7(10:end))
 plot(walk_dat2.CS1(10:end))
 plot(walk_dat2.CS4(10:end))
 plot(walk_dat2.CS5(10:end))
-ylim([0 30])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 figure(4)
@@ -77,7 +80,6 @@ plot(walk_dat3.CS7(10:end))
 plot(walk_dat3.CS1(10:end))
 plot(walk_dat3.CS4(10:end))
 plot(walk_dat3.CS5(10:end))
-ylim([0 30])
 legend('Navicular','Cuboid', '5th Met', '1st Met','Calcaneus')
 
 figure(5)
