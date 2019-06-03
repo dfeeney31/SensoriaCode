@@ -1,6 +1,8 @@
 function convValues = convLeftVals(data,calibData)
-%UNTITLED Convert the Sensoria values to the correct scale using a manual
-%zero calibration. 
+%convLeftVals Convert the Sensoria values to the correct scale using a manual
+%zero calibration. A,B,C,D all come from Sensoria calibration report.
+%Manual calibration requires the subject wear the sock but put their foot
+%in the air to create a new 0.
 
 
 % Hard code the baseline sensor data from Sensoria. 
