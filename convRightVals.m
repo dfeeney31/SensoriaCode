@@ -3,6 +3,11 @@ function convValues = convRightVals(data,calibData)
 %zero calibration. A,B,C,D all come from Sensoria calibration report.
 %Manual calibration requires the subject wear the sock but put their foot
 %in the air to create a new 0.
+%This is based on the zeroing function: 
+%Weight = A (X - (Xo - D))^(-B) + C where A,B,C, and D come from the
+%Sensoria-provided calibration reports and Xo is the average of the sensor
+%recordings during the zero calibration recording. The weight is multiplied
+%by the scaling factor listed below as calFactor to convert to PSI.
 
 
 % Hard code the baseline sensor data from Sensoria. 

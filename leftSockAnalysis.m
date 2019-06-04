@@ -1,4 +1,16 @@
 %%% Left sock analysis %%%
+
+%% How to use:
+% The importfile.m functions should import the csv files from Sensoria.
+% Best practice is to have these uploaded to dropbox before closing the
+% app. Record the order of trials in a lab notebook. convRightvals and
+% convLeftVals are two functions that take a zero calibration recording
+% (i.e. sock on foot, foot held in the air) to make sure the sensors can be
+% zero'd on our backend. Important: this is a nonlinear zero'ing function
+% that is described in those functions and cannot just be subtracted to the
+% recorded values. 
+
+%% 
 clear
 % Load some trials below
 walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\leftWalkLow.csv');
@@ -7,12 +19,6 @@ walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\
 
 %%%% program to adjust sensors to correct scale. %%%%
 left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\leftNoLoad.csv');
-
-
-%%% New equations are PSI = A (x-(xo - xcal))^-B + C, where x0 is our
-%%% manual calibration, xcal is sensoria's cal. A,B,C come from the
-%%% calibration files and are listed above. These are automatically updated
-%%% in the convLeftVals.m, which needs to live in the same folder as this. 
 
 walkLow = convLeftVals(walk_dat, left_cal);
 walkMod = convLeftVals(walk_dat2, left_cal);
