@@ -14,14 +14,14 @@
 %%
 clear
 addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')  
-rightCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\rightCal.csv');
+rightCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\CalibrationTesting\rightCal.csv');
 
 %walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing1.csv');
 %swing2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\AdidasGolfDD\mattHammerSwing2.csv');
 %swing3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\X.csv');
 
-walk_dat = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\LowTension.csv');
-walk_dat2 = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\HighTension.csv');
+walk_dat = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\CalibrationTesting\LowTension.csv');
+walk_dat2 = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\CalibrationTesting\HighTension.csv');
 walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\rightWalkHigh.csv');
 
 %%% convert values with function convRightVals

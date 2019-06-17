@@ -18,7 +18,7 @@ walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\
 walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\leftWalkHigh.csv');
 
 %%%% program to adjust sensors to correct scale. %%%%
-left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\leftNoLoad.csv');
+left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\CalibrationTesting\leftNoLoad.csv');
 
 walkLow = convLeftVals(walk_dat, left_cal);
 walkMod = convLeftVals(walk_dat2, left_cal);
