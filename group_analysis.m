@@ -2,11 +2,11 @@
 %%%%%% Sensor 5: Calcaneus, 6: lateral malleolus, 7: cuboid %%%%%%%%%%%%%%
 %walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\SauconyPilot\df_x_in.CSsv');
 clear
-cd 'C:\Users\Daniel.Feeney\Desktop\SensoriaCode\NBFiles\'
+cd 'C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\StretchTesting'
 files = dir('*.csv');
 longdata(1,1) = struct();
 counter = 1;
-rightCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\CalibrationTesting\rightCal.csv');
+rightCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\StretchTesting\DFCalLeft.csv');
 
 for file = files'
     walk_dat = importfile(file.name);
@@ -50,6 +50,9 @@ for file = files'
     
     counter = counter + 1;
 end
+
+
+
 
 %% Histograms of peak pressures
 %%% First met head %%%

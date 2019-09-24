@@ -13,14 +13,14 @@ function convValues = convLeftVals(data,calibData)
 % Hard code the baseline sensor data from Sensoria. 
 calFactor = (2.20462262/1000)/0.196349148;            %Provided by Sensoria 
 
-A0cal = 1.63*10^8; B0cal = 1.37; C0cal = -2.68*10^4; D0cal = 571;
-A1cal = 8.16*10^11; B1cal = 2.9; C1cal = -1.41*10^3; D1cal = 1050;
-A2cal = 3.00*10^13; B2cal = 3.48; C2cal = -4.02*10^3; D2cal = 689;
-A3cal = 2.72*10^12; B3cal = 3.14; C3cal = -3.49*10^3; D3cal = 680;
-A4cal = 1.02*10^11; B4cal = 2.52; C4cal = -6.95*10^3; D4cal = 703;
-A5cal = 8.13*10^8; B5cal = 1.77; C5cal = -9.73*10^3; D5cal = 594;
-A6cal = 3.23*10^13; B6cal = 3.56; C6cal = -5.42*10^3; D6cal = 554; 
-A7cal = 6.81*10^10; B7cal = 2.5; C7cal = -6.97*10^3; D7cal = 632;
+A0cal = 1.61*10^10; B0cal = 2.15; C0cal = -1.50*10^4; D0cal = 6.41*10^2;
+A1cal = 2.30*10^9; B1cal = 1.89; C1cal = -1.03*10^4; D1cal = 6.68*10^2;
+A2cal = 1.81*10^9; B2cal = 1.66; C2cal = -2.13*10^4; D2cal = 7.29*10^2;
+A3cal = 8.42*10^9; B3cal = 1.99; C3cal = -1.65*10^4; D3cal = 7.43*10^2;
+A4cal = 1.54*10^9; B4cal = 1.72; C4cal = -1.82*10^4; D4cal = 7.21*10^2;
+A5cal = 6.27*10^12; B5cal = 3.13; C5cal = -8.43*10^3; D5cal = 6.76*10^2;
+A6cal = 3.94*10^10; B6cal = 2.31; C6cal = -1.38*10^4; D6cal = 6.27*10^2; 
+A7cal = 1.51*10^9; B7cal = 1.57; C7cal = -3.99*10^4; D7cal = 8.41^10^2;
 
 
 convValues.CS0 = (A0cal * ((data.S0(2:end) - (mean(calibData.S0) - D0cal)).^-B0cal) + C0cal) * calFactor;

@@ -23,14 +23,14 @@ A6cal = 2.04*10^8; B6cal = 1.31; C6cal = -3.28*10^4; D6cal = 776;
 A7cal = 4.91*10^9; B7cal = 2.04; C7cal = -7.09*10^3; D7cal = 732;
 
 
-convValues.CS0 = (A0cal * ((data.S0(2:end) - (mean(calibData.S0) - D0cal)).^-B0cal) + C0cal) * calFactor;
-convValues.CS1 = (A1cal * ((data.S1(2:end) - (mean(calibData.S1) - D1cal)).^-B1cal) + C1cal) * calFactor;
-convValues.CS2 = (A2cal * ((data.S2(2:end) - (mean(calibData.S2) - D2cal)).^-B2cal) + C2cal) * calFactor;
-convValues.CS3 = (A3cal * ((data.S3(2:end) - (mean(calibData.S3) - D3cal)).^-B3cal) + C3cal) * calFactor;
-convValues.CS4 = (A4cal * ((data.S4(2:end) - (mean(calibData.S4) - D4cal)).^-B4cal) + C4cal) * calFactor;
-convValues.CS5 = (A5cal * ((data.S5(2:end) - (mean(calibData.S5) - D5cal)).^-B5cal) + C5cal) * calFactor;
-convValues.CS6 = (A6cal * ((data.S6(2:end) - (mean(calibData.S6) - D6cal)).^-B6cal) + C6cal) * calFactor;
-convValues.CS7 = (A7cal * ((data.S7(2:end) - (mean(calibData.S7) - D7cal)).^-B7cal) + C7cal) * calFactor;
+convValues.CS0 = (A0cal * ((data.S0(2:end) - (mean(calibData.S0(4:end)) - D0cal)).^-B0cal) + C0cal) * calFactor;
+convValues.CS1 = (A1cal * ((data.S1(2:end) - (mean(calibData.S1(4:end)) - D1cal)).^-B1cal) + C1cal) * calFactor;
+convValues.CS2 = (A2cal * ((data.S2(2:end) - (mean(calibData.S2(4:end)) - D2cal)).^-B2cal) + C2cal) * calFactor;
+convValues.CS3 = (A3cal * ((data.S3(2:end) - (mean(calibData.S3(4:end)) - D3cal)).^-B3cal) + C3cal) * calFactor;
+convValues.CS4 = (A4cal * ((data.S4(2:end) - (mean(calibData.S4(4:end)) - D4cal)).^-B4cal) + C4cal) * calFactor;
+convValues.CS5 = (A5cal * ((data.S5(2:end) - (mean(calibData.S5(4:end)) - D5cal)).^-B5cal) + C5cal) * calFactor;
+convValues.CS6 = (A6cal * ((data.S6(2:end) - (mean(calibData.S6(4:end)) - D6cal)).^-B6cal) + C6cal) * calFactor;
+convValues.CS7 = (A7cal * ((data.S7(2:end) - (mean(calibData.S7(4:end)) - D7cal)).^-B7cal) + C7cal) * calFactor;
 
 
 

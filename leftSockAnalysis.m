@@ -12,54 +12,146 @@
 
 %% 
 clear
-% Load some trials below
-walk_dat = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\leftWalkLow.csv');
-walk_dat2 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\leftWalkMod.csv');
-walk_dat3 = importfile('C:\Users\Daniel.Feeney\Desktop\SensoriaCode\reliability\leftWalkHigh.csv');
+addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')  
 
-%%%% program to adjust sensors to correct scale. %%%%
-left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\CalibrationTesting\leftNoLoad.csv');
+% % Load some trials below
 
-walkLow = convLeftVals(walk_dat, left_cal);
-walkMod = convLeftVals(walk_dat2, left_cal);
-walkHigh = convLeftVals(walk_dat3, left_cal);
+% %%%% program to adjust sensors to correct scale. %%%%
+left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\LeftCal.csv');
+LaceSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\LaceDown.csv');
+conA = convLeftVals(LaceSwitch, left_cal);
+
+LRSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\LRDown.csv');
+conB = convLeftVals(LRSwitch, left_cal);
+
+OverlapSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\OverlappingDown.csv');
+conC = convLeftVals(OverlapSwitch, left_cal);
+
+TriSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\TriDown.csv');
+conD = convLeftVals(TriSwitch, left_cal);
+
+XSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\XDown.csv');
+conE = convLeftVals(XSwitch, left_cal);
+
 
 %%% Full sock %%%
-figure(1)
-plot(walkLow.CS0(10:end))
-hold on
-plot(walkLow.CS1(10:end))
-plot(walkLow.CS2(10:end))
-plot(walkLow.CS3(10:end))
-plot(walkLow.CS4(10:end))
-plot(walkLow.CS5(10:end))
-plot(walkLow.CS6(10:end))
-plot(walkLow.CS7(10:end))
-title('Low')
-legend('Lateral 5th ray','5th MTP', '5th Distal Phalanx', '1st MTP','Navicular','Calcaneous','1st Distal Phalanx','Cuboid')
+% figure(1)
+% plot(conA.CS0(10:end))
+% hold on
+% plot(conA.CS1(10:end))
+% plot(conA.CS2(10:end))
+% plot(conA.CS3(10:end))
+% plot(conA.CS4(10:end))
+% plot(conA.CS5(10:end))
+% plot(conA.CS6(10:end))
+% plot(LaceSwitch.CS7(10:end))
+% title('Laced Switchback Downhill')
+% legend('Lateral 5th ray','5th MTP', '5th Distal Phalanx', '1st MTP','Navicular','Calcaneous','1st Distal Phalanx','Cuboid')
+% 
+% figure(2)
+% plot(conB.CS0(10:end))
+% hold on
+% plot(conB.CS1(10:end))
+% plot(conB.CS2(10:end))
+% plot(conB.CS3(10:end))
+% plot(conB.CS4(10:end))
+% plot(conB.CS5(10:end))
+% plot(conB.CS6(10:end))
+% plot(LRSwitch.CS7(10:end))
+% xlim([0 300])
+% title('LR Downhill')
+% legend('Lateral 5th ray','5th MTP', '5th Distal Phalanx', '1st MTP','Navicular','Calcaneous','1st Distal Phalanx','Cuboid')
 
-figure(2)
-plot(walkMod.CS0(10:end))
-hold on
-plot(walkMod.CS1(10:end))
-plot(walkMod.CS2(10:end))
-plot(walkMod.CS3(10:end))
-plot(walkMod.CS4(10:end))
-plot(walkMod.CS5(10:end))
-plot(walkMod.CS6(10:end))
-plot(walkMod.CS7(10:end))
-title('Moderate')
-legend('Lateral 5th ray','5th MTP', '5th Distal Phalanx', '1st MTP','Navicular','Calcaneous','1st Distal Phalanx','Cuboid')
+% figure(3)
+% plot(conC.CS0(10:end))
+% hold on
+% plot(conC.CS1(10:end))
+% plot(conC.CS2(10:end))
+% plot(conC.CS3(10:end))
+% plot(conC.CS4(10:end))
+% plot(conC.CS5(10:end))
+% plot(conC.CS6(10:end))
+% plot(OverlapSwitch.CS7(10:end))
+% title('Overlapping Panels Downhill')
+% legend('Lateral 5th ray','5th MTP', '5th Distal Phalanx', '1st MTP','Navicular','Calcaneous','1st Distal Phalanx','Cuboid')
 
-figure(3)
-plot(walkHigh.CS0(10:end))
+%% Broken down by sensor location 
+figure(4)
+plot(conA.CS0(10:end))
+title('Lateral 5th ray')
 hold on
-plot(walkHigh.CS1(10:end))
-plot(walkHigh.CS2(10:end))
-plot(walkHigh.CS3(10:end))
-plot(walkHigh.CS4(10:end))
-plot(walkHigh.CS5(10:end))
-plot(walkHigh.CS6(10:end))
-plot(walkHigh.CS7(10:end))
-title('High')
-legend('Lateral 5th ray','5th MTP', '5th Distal Phalanx', '1st MTP','Navicular','Calcaneous','1st Distal Phalanx','Cuboid')
+plot(conB.CS0(10:end))
+plot(conC.CS0(10:end))
+plot(conD.CS0(10:end))
+plot(conE.CS0(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
+
+figure(5)
+plot(conA.CS1(10:end))
+title('5th MTP')
+hold on
+plot(conB.CS1(10:end))
+plot(conC.CS1(10:end))
+plot(conD.CS1(10:end))
+plot(conE.CS1(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
+
+figure(6)
+plot(conA.CS2(10:end))
+title('Lateral 5th Ray')
+hold on
+plot(conB.CS2(10:end))
+plot(conC.CS2(10:end))
+plot(conD.CS2(10:end))
+plot(conE.CS2(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
+
+figure(7)
+plot(conA.CS3(10:end))
+title('1st MTP')
+hold on
+plot(conB.CS3(10:end))
+plot(conC.CS3(10:end))
+plot(conD.CS3(10:end))
+plot(conE.CS3(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
+
+figure(8)
+plot(conA.CS4(10:end))
+title('Navicular')
+hold on
+plot(conB.CS4(10:end))
+plot(conC.CS4(10:end))
+plot(conD.CS5(10:end))
+plot(conE.CS5(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
+
+figure(9)
+plot(conA.CS5(10:end))
+title('Calcaneous')
+hold on
+plot(conB.CS5(10:end))
+plot(conC.CS5(10:end))
+plot(conD.CS5(10:end))
+plot(conE.CS5(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
+
+figure(10)
+plot(conA.CS6(10:end))
+title('1st Distal Phalanx')
+hold on
+plot(conB.CS6(10:end))
+plot(conC.CS6(10:end))
+plot(conD.CS6(10:end))
+plot(conE.CS6(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
+
+figure(11)
+plot(LaceSwitch.CS7(10:end))
+title('Cuboid')
+hold on
+plot(LRSwitch.CS7(10:end))
+plot(OverlapSwitch.CS7(10:end))
+plot(TriSwitch.CS7(10:end))
+plot(XSwitch.CS7(10:end))
+legend('Lace','LR','Overlapping','Tri','X')
