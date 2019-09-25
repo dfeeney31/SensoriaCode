@@ -1,8 +1,9 @@
 clear
-cd 'C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing'
+cd 'C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\DF'; %Change this line to the subject folder
 files = dir('*.csv');
 longdata(1,1) = struct();
 counter = 1;
+addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')  
 leftCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\Sept19 Testing\RawFiles\LeftCal.csv');
 
 for file = files'
