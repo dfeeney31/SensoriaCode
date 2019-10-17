@@ -2,6 +2,8 @@
 
 %% How to use:
 % The importfile.m functions should import the csv files from Sensoria.
+% This version uses uigetfile to allow user to select files rather than
+% hard code them in
 % Best practice is to have these uploaded to dropbox before closing the
 % app. Record the order of trials in a lab notebook. convRightvals and
 % convLeftVals are two functions that take a zero calibration recording
@@ -9,48 +11,40 @@
 % zero'd on our backend. Important: this is a nonlinear zero'ing function
 % that is described in those functions and cannot just be subtracted to the
 % recorded values. 
-uigetfile('*.csv')
+
 %% 
 clear
 addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')  
-left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF\BF_Cal.csv');
-levelVal = 0; %Change to 1 for level running
-%% Downhill
-if levelVal ~= 1
-    LaceSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_DH_Lace.csv');
-    conA = convLeftVals(LaceSwitch, left_cal);
-    
-    LRSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_DH_LR.csv');
-    conB = convLeftVals(LRSwitch, left_cal);
-    
-    OverlapSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_DH_Panels.csv');
-    conC = convLeftVals(OverlapSwitch, left_cal);
-    
-    TriSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_DH_Tri.csv');
-    conD = convLeftVals(TriSwitch, left_cal);
-    
-    XSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_DH_Y.csv');
-    conE = convLeftVals(XSwitch, left_cal);
-    
-    
-    %% Level running
-else
-    LaceSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_level_Lace.csv');
-    conA = convLeftVals(LaceSwitch, left_cal);
-    
-    LRSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_level_LR.csv');
-    conB = convLeftVals(LRSwitch, left_cal);
-    
-    OverlapSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_level_Panels.csv');
-    conC = convLeftVals(OverlapSwitch, left_cal);
-    
-    TriSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_level_Tri.csv');
-    conD = convLeftVals(TriSwitch, left_cal);
-    
-    XSwitch = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\BF_level_Y.csv');
-    conE = convLeftVals(XSwitch, left_cal);
-end
-%% Broken down by sensor location 
+disp('Select Calibration file')
+[file1, path1] = uigetfile('*.csv');
+left_cal = importfile(strcat(path1,file1));
+
+%% Level running
+disp('Select Lace')
+[lace,path] = uigetfile('*.csv');
+LaceSwitch = importfile(strcat(path,lace));
+conA = convLeftVals(LaceSwitch, left_cal);
+
+disp('Select LR')
+[lr,lrPath] =uigetfile('*.csv');
+LRSwitch = importfile(strcat(lrPath,lr));
+conB = convLeftVals(LRSwitch, left_cal);
+
+disp('Select Panels')
+[panels, panelPath] = uigetfile('*.csv');
+OverlapSwitch = importfile(strcat(panelPath,panels));
+conC = convLeftVals(OverlapSwitch, left_cal);
+
+disp('Select Tri strap')
+[tri, triPath] = uigetfile('*.csv');
+TriSwitch = importfile(strcat(triPath,tri));
+conD = convLeftVals(TriSwitch, left_cal);
+
+disp('Select Y Wrap')
+[YW, yPath] = uigetfile('*.csv');
+YSwitch = importfile(strcat(yPath,YW));
+conE = convLeftVals(YSwitch, left_cal);
+%% plotting
 figure(4)
 plot(conA.CS0(10:end))
 title('Lateral 5th ray')
@@ -100,6 +94,7 @@ plot(conC.CS4(10:end))
 plot(conD.CS4(10:end))
 plot(conE.CS4(10:end))
 legend('Lace','LR','Overlapping','Tri','X')
+disp('Select Y Wrap')
 
 figure(9)
 plot(conA.CS5(10:end))
@@ -128,7 +123,7 @@ hold on
 plot(LRSwitch.CS7(10:end))
 plot(OverlapSwitch.CS7(10:end))
 plot(TriSwitch.CS7(10:end))
-plot(XSwitch.CS7(10:end))
+plot(YSwitch.CS7(10:end))
 legend('Lace','LR','Overlapping','Tri','X')
 
 %% Accelerometer data to delimit steps

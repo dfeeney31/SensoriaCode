@@ -6,11 +6,11 @@ cd 'C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\StretchTesting'
 files = dir('*.csv');
 longdata(1,1) = struct();
 counter = 1;
-rightCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\StretchTesting\DFCalLeft.csv');
+leftCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\StretchTesting\DFCalLeft.csv');
 
 for file = files'
     walk_dat = importfile(file.name);
-    walk_trial = convRightVals(walk_dat, rightCal);
+    walk_trial = convLeftVals(walk_dat, leftCal);
     
     clear pks_nav locs_nav pks_cub locs_cub pks_5mt locs_5mt pks_1mt locs_1mt pks_calc locs_calc
 

@@ -14,8 +14,8 @@ function convValues = convLeftVals(data,calibData)
 calFactor = (2.20462262/1000)/0.196349148;            %Provided by Sensoria 
 
 A0cal = 1.61*10^10; B0cal = 2.15; C0cal = -1.50*10^4; D0cal = 6.41*10^2;
-A1cal = 2.30*10^9; B1cal = 1.89; C1cal = -1.03*10^4; D1cal = 6.68*10^2;
-A2cal = 1.81*10^9; B2cal = 1.66; C2cal = -2.13*10^4; D2cal = 7.29*10^2;
+A1cal = 2.30*10^9; B1cal = 1.89; C1cal = -1.03*10^4; D1cal = 6.86*10^2;
+A2cal = 1.18*10^9; B2cal = 1.66; C2cal = -2.13*10^4; D2cal = 7.29*10^2;
 A3cal = 8.42*10^9; B3cal = 1.99; C3cal = -1.65*10^4; D3cal = 7.43*10^2;
 A4cal = 1.54*10^9; B4cal = 1.72; C4cal = -1.82*10^4; D4cal = 7.21*10^2;
 A5cal = 6.27*10^12; B5cal = 3.13; C5cal = -8.43*10^3; D5cal = 6.76*10^2;

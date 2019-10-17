@@ -19,7 +19,7 @@ for file = files'
     [pks_5mtp, locs_cub] = findpeaks(walk_trial.CS1(10:end), 'MinPeakDistance',20, 'MinPeakHeight',5);
     [pks_5toe, locs_5mt] = findpeaks(walk_trial.CS2(10:end), 'MinPeakDistance',20, 'MinPeakHeight',5);
     [pks_1mtp, locs_1mt] = findpeaks(walk_trial.CS3(10:end), 'MinPeakDistance',20, 'MinPeakHeight',5);
-    [pks_nav, locs_calc] = findpeaks(walk_trial.CS4(10:end), 'MinPeakDistance',20, 'MinPeakheight',5);
+    [pks_nav, locs_nav] = findpeaks(walk_trial.CS4(10:end), 'MinPeakDistance',20, 'MinPeakheight',5);
     [pks_calc, locs_5mt] = findpeaks(walk_trial.CS5(10:end), 'MinPeakDistance',20, 'MinPeakHeight',5);
     [pks_hallux, locs_1mt] = findpeaks(walk_trial.CS6(10:end), 'MinPeakDistance',20, 'MinPeakHeight',5);
     [pks_cub, locs_calc] = findpeaks(walk_trial.CS7(10:end), 'MinPeakDistance',20, 'MinPeakheight',5);
@@ -43,7 +43,7 @@ for file = files'
     longdata(1).calc{counter} = walk_dat.CS5;
     longdata(1).mtp1{counter} = walk_dat.CS4;
     longdata(1).mtp5{counter} = walk_dat.CS1;
-    longdata(1).nav{counter} = walk_dat.CS3;
+    longdata(1).nav{counter} = walk_dat.CS4;
     longdata(1).cub{counter} = walk_dat.CS7;
 
     longdata(1).pkCalc{counter} = pks_calc;
