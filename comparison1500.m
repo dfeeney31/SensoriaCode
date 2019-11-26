@@ -2,6 +2,10 @@
 
 clear
 addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')  
+%%%%% Instructions %%%%%
+% Choose a subject below, and run code for them. Take the average peaks
+% manually. This will move to automation once we have fully vetted the
+% dynamic calibration (convLeftVals) works reliably. 
 %% Kate
 left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\1500Testing\KateCal.csv');
 
@@ -29,6 +33,86 @@ V2cal = convLeftVals(V2, left_cal);
 %% Variability in heel hold 
 std(V1cal.CS5(50:end))
 std(V2cal.CS5(50:end))
+
+
+%% look at reliable sensors to delimit strides
+
+% V1
+[pks_5lat, locs_5late] = findpeaks(V1cal.CS0(10:end), 'MinPeakDistance',20);
+[pks_5mtp, locs_cub] = findpeaks(V1cal.CS1(10:end), 'MinPeakDistance',20);
+[pks_5toe, locs_5mt] = findpeaks(V1cal.CS2(10:end), 'MinPeakDistance',20);
+[pks_1mtp, locs_1mt] = findpeaks(V1cal.CS3(10:end), 'MinPeakDistance',20);
+[pks_nav, locs_nav] = findpeaks(V1cal.CS4(10:end), 'MinPeakDistance',20);
+[pks_calc, locs_5mt] = findpeaks(V1cal.CS5(10:end), 'MinPeakDistance',20);
+[pks_hallux, locs_1mt] = findpeaks(V1cal.CS6(10:end), 'MinPeakDistance',20);
+[pks_cub, locs_calc] = findpeaks(V1cal.CS7(10:end), 'MinPeakDistance',20);
+
+% V2
+[pks_5lat2, locs_5late2] = findpeaks(V2cal.CS0(10:end), 'MinPeakDistance',20);
+[pks_5mtp2, locs_cub2] = findpeaks(V2cal.CS1(10:end), 'MinPeakDistance',20);
+[pks_5toe2, locs_5mt2] = findpeaks(V2cal.CS2(10:end), 'MinPeakDistance',20);
+[pks_1mtp2, locs_1mt2] = findpeaks(V2cal.CS3(10:end), 'MinPeakDistance',20);
+[pks_nav2, locs_nav2] = findpeaks(V2cal.CS4(10:end), 'MinPeakDistance',20);
+[pks_calc2, locs_5mt2] = findpeaks(V2cal.CS5(10:end), 'MinPeakDistance',20);
+[pks_hallux2, locs_1mt2] = findpeaks(V2cal.CS6(10:end), 'MinPeakDistance',20);
+[pks_cub2, locs_calc2] = findpeaks(V2cal.CS7(10:end), 'MinPeakDistance',20);
+
+
+%% Delimit strides to plot mean
+len = 15;
+for i = 2:10
+    try
+        calc_v1(i,:) = V1cal.CS5(floor(locs_calc(i)-len):floor(locs_calc(i)+len));
+        calc_v2(i,:) = V2cal.CS5(floor(locs_calc2(i)-len):floor(locs_calc2(i)+len));
+        
+        nav_v1(i,:) = V1cal.CS4(floor(locs_nav(i)-len):floor(locs_nav(i)+len));
+        nav_v2(i,:) = V2cal.CS4(floor(locs_nav2(i)-len):floor(locs_nav2(i)+len));
+        
+        mtp1_v1(i,:) = V1cal.CS3(floor(locs_nav(i)-len):floor(locs_nav(i)+len));
+        mtp1_v2(i,:) = V2cal.CS3(floor(locs_nav2(i)-len):floor(locs_nav2(i)+len));
+        
+        mtp5_v1(i,:) = V1cal.CS1(floor(locs_nav(i)-len):floor(locs_nav(i)+len));
+        mtp5_v2(i,:) = V2cal.CS1(floor(locs_nav2(i)-len):floor(locs_nav2(i)+len));
+        
+        
+        except
+        pass
+    end
+end
+
+plot(mean(calc_v1,1))
+hold on
+plot(mean(calc_v2,1))
+xlabel('Time(1/33)s','FontSize',14,'FontWeight','bold')
+ylabel('Pressure (PSI)','FontSize',14,'FontWeight','bold')
+title('Heel Pressure')
+legend('V1','V2')
+
+plot(mean(nav_v1,1))
+hold on
+plot(mean(nav_v2,1))
+xlabel('Time(1/33)s','FontSize',14,'FontWeight','bold')
+ylabel('Pressure (PSI)','FontSize',14,'FontWeight','bold')
+title('Navicular Pressure')
+legend('V1','V2')
+
+plot(mean(mtp1_v1,1))
+hold on
+plot(mean(mtp1_v2,1))
+xlabel('Time(1/33)s','FontSize',14,'FontWeight','bold')
+ylabel('Pressure (PSI)','FontSize',14,'FontWeight','bold')
+title('MTP1 Pressure')
+legend('V1','V2')
+
+plot(mean(mtp5_v1,1))
+hold on
+plot(mean(mtp5_v2,1))
+xlabel('Time(1/33)s','FontSize',14,'FontWeight','bold')
+ylabel('Pressure (PSI)','FontSize',14,'FontWeight','bold')
+title('MTP5 Pressure')
+legend('V1','V2')
+%%% end of testing
+%
 %% Plotting
 figure(4)
 plot(V1cal.CS0(10:end))
