@@ -4,7 +4,7 @@ files = dir('*.csv');
 longdata(1,1) = struct();
 counter = 1;
 addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')  
-leftCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\1500Testing\KateCal.csv');
+%leftCal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\SensoriaFolder\1500Testing\KateCal.csv');
 
 for file = files'
     try

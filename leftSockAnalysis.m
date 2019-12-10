@@ -122,13 +122,13 @@ plot(conE.CS6(10:end))
 legend('Lace','LR','Overlapping','Tri','X')
 
 figure(11)
-plot(LaceSwitch.CS7(10:end))
+plot(conA.CS7(10:end))
 title('Cuboid')
 hold on
-plot(LRSwitch.CS7(10:end))
-plot(OverlapSwitch.CS7(10:end))
-plot(TriSwitch.CS7(10:end))
-plot(XSwitch.CS7(10:end))
+plot(conB.CS7(10:end))
+plot(conC.CS7(10:end))
+plot(conD.CS7(10:end))
+plot(conE.CS7(10:end))
 legend('Lace','LR','Overlapping','Tri','X')
 
 %% Accelerometer data to delimit steps
