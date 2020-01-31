@@ -5,7 +5,17 @@ addpath('C:\Users\Daniel.Feeney\Desktop\SensoriaCode')
 % manually. This will move to automation once we have fully vetted the
 % dynamic calibration (convLeftVals) works reliably. 
 
-%% Calibration testing
+%% Devin testing
+left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\Devin\Devin_cal.csv');
+
+V1 = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\Devin\Devin_DH_DD.csv'); 
+DDcal = convLeftVals(V1, left_cal);
+V2 = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\Devin\Devin_DH_SD.csv');
+SDcal = convLeftVals(V2, left_cal);
+V3 = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\Devin\Devin_DH_DD.csv');
+Lacecal = convLeftVals(V3, left_cal);
+
+% Chad
 left_cal = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\CP\CP_cal.csv');
 
 V1 = importfile('C:\Users\Daniel.Feeney\Dropbox (Boa)\Trail Run Internal Pilot\TreadmillSensoria\CP\CP_DH_DD.csv'); 
@@ -28,9 +38,9 @@ std(Lacecal.CS5(50:end))
 [pks_5toe, locs_5mt] = findpeaks(DDcal.CS2(10:end), 'MinPeakDistance',20);
 [pks_1mtp, locs_1mt] = findpeaks(DDcal.CS3(10:end), 'MinPeakDistance',20);
 [pks_nav, locs_nav] = findpeaks(DDcal.CS4(10:end), 'MinPeakDistance',20);
-[pks_calc, locs_5mt] = findpeaks(DDcal.CS5(10:end), 'MinPeakDistance',20);
+[pks_calc, locs_calc] = findpeaks(DDcal.CS5(10:end), 'MinPeakDistance',20);
 [pks_hallux, locs_1mt] = findpeaks(DDcal.CS6(10:end), 'MinPeakDistance',20);
-[pks_cub, locs_calc] = findpeaks(DDcal.CS7(10:end), 'MinPeakDistance',20);
+[pks_cub, locs_cub] = findpeaks(DDcal.CS7(10:end), 'MinPeakDistance',20);
 
 % V2
 [pks_5lat2, locs_5late2] = findpeaks(SDcal.CS0(10:end), 'MinPeakDistance',20);
@@ -38,9 +48,9 @@ std(Lacecal.CS5(50:end))
 [pks_5toe2, locs_5mt2] = findpeaks(SDcal.CS2(10:end), 'MinPeakDistance',20);
 [pks_1mtp2, locs_1mt2] = findpeaks(SDcal.CS3(10:end), 'MinPeakDistance',20);
 [pks_nav2, locs_nav2] = findpeaks(SDcal.CS4(10:end), 'MinPeakDistance',20);
-[pks_calc2, locs_5mt2] = findpeaks(SDcal.CS5(10:end), 'MinPeakDistance',20);
+[pks_calc2, locs_calc2] = findpeaks(SDcal.CS5(10:end), 'MinPeakDistance',20);
 [pks_hallux2, locs_1mt2] = findpeaks(SDcal.CS6(10:end), 'MinPeakDistance',20);
-[pks_cub2, locs_calc2] = findpeaks(SDcal.CS7(10:end), 'MinPeakDistance',20);
+[pks_cub2, locs_cub2] = findpeaks(SDcal.CS7(10:end), 'MinPeakDistance',20);
 
 % V3
 [pks_5lat3, locs_5late3] = findpeaks(Lacecal.CS0(10:end), 'MinPeakDistance',20);
@@ -48,9 +58,9 @@ std(Lacecal.CS5(50:end))
 [pks_5toe3, locs_5mt3] = findpeaks(Lacecal.CS2(10:end), 'MinPeakDistance',20);
 [pks_1mtp3, locs_1mt3] = findpeaks(Lacecal.CS3(10:end), 'MinPeakDistance',20);
 [pks_nav3, locs_nav3] = findpeaks(Lacecal.CS4(10:end), 'MinPeakDistance',20);
-[pks_calc3, locs_5mt3] = findpeaks(Lacecal.CS5(10:end), 'MinPeakDistance',20);
+[pks_calc3, locs_calc3] = findpeaks(Lacecal.CS5(10:end), 'MinPeakDistance',20);
 [pks_hallux3, locs_1mt3] = findpeaks(Lacecal.CS6(10:end), 'MinPeakDistance',20);
-[pks_cub3, locs_calc3] = findpeaks(Lacecal.CS7(10:end), 'MinPeakDistance',20);
+[pks_cub3, locs_cub3] = findpeaks(Lacecal.CS7(10:end), 'MinPeakDistance',20);
 
 
 %% Delimit strides to plot mean
@@ -97,6 +107,8 @@ xlabel('Time(1/33)s','FontSize',14,'FontWeight','bold')
 ylabel('Pressure (PSI)','FontSize',14,'FontWeight','bold')
 title('Heel Pressure')
 legend('DD','SD','Lace')
+
+std(calc_v1')
 
 plot(mean(nav_v1,1))
 hold on
